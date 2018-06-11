@@ -39,7 +39,7 @@
         el: "#app",
         data: {
             offset: 5,     // items a mostrar despues del scroll
-            display: 5,     // cantidad de items iniciales
+            display: 10,     // cantidad de items iniciales
             trigger: 300,   // longitud para empezar el scroll
             items: [],    // fake data
             end: false, // no existen mas resultados
@@ -65,7 +65,7 @@
             },
             // creando información falsa
             fetch() {
-                for (let i = 0; i <= 40; i++) this.items.push({ id: i + 1, title: `Titulo Número ${i + 1}`, content: lorem })
+                for (let i = 0; i <= 100; i++) this.items.push({ id: i + 1, title: `Titulo Número ${i + 1}`, content: lorem })
             }
         },
         mounted() {
