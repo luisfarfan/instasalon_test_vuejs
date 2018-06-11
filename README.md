@@ -13,7 +13,7 @@ necesitamos que le asignes una prioridad
 - Ordenar los resultados de la búsqueda por precio.
 - Visualizar el detalle del servicio en un modal.
 
-# Juntando las tareas! q
+# Juntando las tareas!
 
 Juntando las tareas, seria algo como un buscador(input #componente1) donde el usuario
 podra escribir un nombre, y segun vaya escribiendo se mostraran los resultados
