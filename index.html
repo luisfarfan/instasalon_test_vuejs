@@ -14,9 +14,8 @@
             <v-card v-for="item in sliced" :key="item.id" v-if="sliced">
                 <v-card-title primary-title>
                     <div>
-                        <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
-                        <div>Located two hours south of Sydney in the
-                            <br>Southern Highlands of New South Wales, ...</div>
+                        <h3 class="headline mb-0">{{ item.title }}</h3>
+                        <div>{{ item.content}}</div>
                     </div>
                 </v-card-title>
                 <v-card-actions>
@@ -34,7 +33,7 @@
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
 <script>
-    let lorem = `<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi hic obcaecati illo maxime nam illum recusandae corporis maiores excepturi unde sapiente vero odit nihil laborum perferendis omnis, facilis deserunt neque!</p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi hic obcaecati illo maxime nam illum recusandae corporis maiores excepturi unde sapiente vero odit nihil laborum perferendis omnis, facilis deserunt neque!</p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi hic obcaecati illo maxime nam illum recusandae corporis maiores excepturi unde sapiente vero odit nihil laborum perferendis omnis, facilis deserunt neque!</p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi hic obcaecati illo maxime nam illum recusandae corporis maiores excepturi unde sapiente vero odit nihil laborum perferendis omnis, facilis deserunt neque!</p>`;
+    const lorem = `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi hic obcaecati illo maxime nam illum recusandae corporis maiores excepturi unde sapiente vero odit nihil laborum perferendis omnis, facilis deserunt neque!`;
 
     new Vue({
         el: "#app",
