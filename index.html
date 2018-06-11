@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+
+<body>
+<div id="app">
+    <v-layout>
+        <v-flex xs12 sm6 offset-sm3>
+            <v-card v-for="item in sliced" :key="item.id" v-if="sliced">
+                <v-card-title primary-title>
+                    <div>
+                        <h3 class="headline mb-0">Kangaroo Valley Safari</h3>
+                        <div>Located two hours south of Sydney in the
+                            <br>Southern Highlands of New South Wales, ...</div>
+                    </div>
+                </v-card-title>
+                <v-card-actions>
+                    <v-btn flat color="orange">Share</v-btn>
+                    <v-btn flat color="orange">Explore</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-flex>
+    </v-layout>
+    <v-layout v-if="end">
+        <p>No hay mas resultados!</p>
+    </v-layout>
+</div>
+
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+<script>
+    let lorem = `<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi hic obcaecati illo maxime nam illum recusandae corporis maiores excepturi unde sapiente vero odit nihil laborum perferendis omnis, facilis deserunt neque!</p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi hic obcaecati illo maxime nam illum recusandae corporis maiores excepturi unde sapiente vero odit nihil laborum perferendis omnis, facilis deserunt neque!</p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi hic obcaecati illo maxime nam illum recusandae corporis maiores excepturi unde sapiente vero odit nihil laborum perferendis omnis, facilis deserunt neque!</p><p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi hic obcaecati illo maxime nam illum recusandae corporis maiores excepturi unde sapiente vero odit nihil laborum perferendis omnis, facilis deserunt neque!</p>`;
+
+    new Vue({
+        el: "#app",
+        data: {
+            offset: 5,     // items a mostrar despues del scroll
+            display: 5,     // cantidad de items iniciales
+            trigger: 300,   // longitud para empezar el scroll
+            items: [],    // fake data
+            end: false, // no existen mas resultados
+        },
+        computed: {
+            // aqui se hace un slice a `items` que aumentara de 5 en 5 hasta que llegue al final
+            sliced() {
+                return this.items.slice(0, this.display);
+            },
+        },
+        methods: {
+            scroll() {
+                window.onscroll = ev => {
+                    if (window.innerHeight + window.scrollY >= (document.body.offsetHeight - this.trigger)) {
+                        if (this.display < this.items.length) {
+                            this.display = this.display + this.offset;
+                        }
+                        else {
+                            this.end = true;
+                        }
+                    }
+                };
+            },
+            // creando información falsa
+            fetch() {
+                for (let i = 0; i <= 40; i++) this.items.push({ id: i + 1, title: `Titulo Número ${i + 1}`, content: lorem })
+            }
+        },
+        mounted() {
+            // iniciar evento scroll
+            this.scroll();
+        },
+        created() {
+            // al iniciar el componente, se crea la información.
+            this.fetch();
+        }
+    });
+</script>
+</body>
+
+</html>
